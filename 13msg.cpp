@@ -3,7 +3,7 @@
 using namespace std;
 const int INF = 1000000; 
 
-void MSG( vector<vector<int>>& edges, int n, int k){
+void MSG( vector<vector<int>>& edges, int n){
     vector<int> fdist(n, INF);
     vector <int> d(n,-1);
     vector<vector<int>> E(n, vector<int>(n, 0));
@@ -55,6 +55,6 @@ int main(){
     for (int i = 0; i < k; i++) {
         cin >> edges[i][0] >> edges[i][1] >> edges[i][2];
     }
-    MSG(edges,n,k);
+    MSG(edges,n);
     return 0;
 }
