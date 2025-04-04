@@ -4,7 +4,7 @@
 using namespace std;
 
 void primMST(vector<vector<int>>& cost, int V) {
-    vector<int> NEAR(V, 0); 
+    vector<int> near(V, 0); 
     vector<vector<int>> mstEdges(V - 1, vector<int>(2));
 
     int u = 0, v = 0, minCost = -1;
@@ -12,7 +12,7 @@ void primMST(vector<vector<int>>& cost, int V) {
     
     for (int i = 0; i < V; i++) {
         for(int j=0;j<V;j++) {
-            if(cost[i][j]> 0 && (minCost==-1 ||))
+            if(cost[i][j]> 0 && (minCost==-1 || cost[i][j] < minCost))
             if (cost[i][j] > 0 && (minCost == -1 || cost[i][j] < minCost)) {
                 minCost = cost[i][j];
                 u = i;

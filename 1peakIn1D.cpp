@@ -27,13 +27,17 @@
         else{
             low=mid+1;
         }
-        return -1;
+        
     }
+    return -1;
 
   }
   int main(){
     int n;
     cout<<" enter size of array: "<<n;
+    cin>>n;
+    vector<int> arr(n);
+    for(int i=0; i<n; i++) cin >> arr[i];
     
     vector<int> arr(n);
     int ans =f(arr);

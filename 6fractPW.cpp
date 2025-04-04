@@ -53,7 +53,7 @@ vector<double> fractionalKnapsack(double **arr, int n, int capacity) {
     double profit = 0;
     vector<double> List(n, 0);
     int i = 0;
-    int ratio=arr[i][1]/arr[i][0];
+    double ratio=arr[i][1]/arr[i][0];
     // Pick items in full until the knapsack is full
     while (i < n && weight + arr[i][0] <= capacity) {
         weight += arr[i][0];
@@ -100,7 +100,7 @@ int main() {
 
     generateArray(arr, n, m);  // Fill the array with random values
 
-    cout << "Sorting by weight in increasing order using QuickSort" << endl;
+    cout << "Sorting by profit/weight in descending order using QuickSort" << endl;
     quickSort(arr, 0, n - 1, m);  // Sort based on profit (arr[i][1])
     
     cout << "Weight\tProfit\tP/W" << endl;
