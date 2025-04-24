@@ -64,7 +64,7 @@ Space Complexity: O(1) since no extra space is used.
 2. PEAK IN 2D-----------------------------------------------------------------
 
    
- #include<iostream>
+``` #include<iostream>
  using namespace std;
  #include <vector>
 int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
@@ -121,7 +121,7 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
         cout << "No peak element found." << endl;
     }
     return 0;
- } 
+ }  ```
 
  ------------------------------Code Explanation:-------------------------------------------------
 This program finds a peak element in a 2D matrix using a binary search on columns approach. A peak element is an element that is greater than its left and right neighbors in the matrix.
@@ -145,7 +145,7 @@ Space Complexity: O(1) (only a few variables are used).
    
    3. MAGIC SQUARE --------------------------------------------------------------------------------
 
-#include <iostream>
+```#include <iostream>
 
 #include<vector>
 
@@ -228,11 +228,11 @@ Repeats the process until all n² numbers are placed.
 Time & Space Complexity:
 Time Complexity: O(n^2) since each number from 1 to n² is placed once.
 
-Space Complexity: O(n^2)for storing the magic square.
+Space Complexity: O(n^2)for storing the magic square.```
 
 3.Fractional Knapsack
 
-Code – 
+```Code – 
 #include <cstdlib>
 #include <iostream>
 using namespace std;
@@ -370,11 +370,11 @@ generateArray: O(n)
 quickSort:O(nlogn) (average case), O(n^2)(worst case)
 fractionalKnapsack:O(n)
 Overall Complexity: O(nlogn) (due to sorting)
-Space Complexity:O(n) (for the array and output list)
+Space Complexity:O(n) (for the array and output list)```
 
 
 4. CPU SCHEDULING----------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <time.h>
 #include <vector>
 #include <chrono>
@@ -508,7 +508,7 @@ int main()
     printArray(arr, n, m);
     result(arr, n, m);
     return 0;
-}
+}```
 
 ------------------------------------------------------------------CODE EXPLANATION----------------------------------------------------------------------------------------
 This C++ program simulates processes with random arrival and finish times, computes durations, sorts them based on arrival, finish, and duration using QuickSort, and determines how many processes can be executed within a 500-second window.
@@ -517,8 +517,8 @@ Time Complexity: O(nlogn)
 Space Complexity: O(n*m) 
 
 
-6. FRACTONAL KNAPSACK -------------------------------------------------------------------------
-#include <iostream>
+5. FRACTONAL KNAPSACK -------------------------------------------------------------------------
+```#include <iostream>
 #include <vector>
 using namespace std;
 void generateArray(double **arr, int n, int m)
@@ -629,7 +629,7 @@ int main() {
     
 
     return 0;
-}
+}```
 
 --------------------------------Code Explanation:-----------------------------------------
 This program implements the Fractional Knapsack problem using the Greedy Algorithm and QuickSort to maximize profit.
@@ -659,7 +659,7 @@ Overall Complexity: O(nlogn) (due to sorting)
 Space Complexity:O(n) (for the array and output list)
 
 7. CONVEX HULL-------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <vector>
 using namespace std;
 // #ifndef POSSIBLE_TRIANGLES_H
@@ -809,7 +809,7 @@ int main()
     vector<Point> polygon = convexHull(points); // final time complexity: O(n^4)
     print(polygon);
     return 0;
-}
+}```
 
 -----------------------------------------Code Explanation:----------------------------------
 This program computes the Convex Hull of a given set of points in 2D space. The convex hull is the smallest polygon that encloses all given points.
@@ -848,7 +848,7 @@ Space Complexity: O(n) (for storing convex hull points)
 
 
 8. QUICK HULL------------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <vector>
 #include <climits>
 using namespace std;
@@ -1143,7 +1143,7 @@ int main()
     cout << "convex polygon: ";
     print(polygon);
     return 0;
-}
+}```
 
  ---------------------------------------------------Code Summary:------------------------------------------------
 Defines geometric classes (Point, Line, Triangle) and utility functions to compute orientation, area, and eliminate interior points.
@@ -1159,7 +1159,7 @@ Overall QuickHull (best/average): O(n log n), worst-case: O(n²) (e.g., all poin
 Uses additional O(n) space for storing regions and the polygon.
 
 9. QUICKSORT ITERATIVE----------------------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 using namespace std;
 #include <stack>
 int partition (int arr[],int low,int high){
@@ -1223,7 +1223,7 @@ int main() {
 
     return 0;
 }
-
+```
 ---------------------------------------code Summary (Iterative QuickSort):-------------------------------
 Implements QuickSort using an explicit stack instead of recursion (avoiding stack overflow on large inputs).
 
@@ -1239,7 +1239,7 @@ Time Complexity	 O(n log n)	 O(n log n)	    O(n²)(unbalanced pivot)
 Space Complexity O(log n)	 O(log n)	    O(n) (stack in worst case)
 
 10. MATRIX MULTIPLICATION------------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <vector>
 using namespace std;
 void multiply(vector<vector<int>>& mat1,vector<vector<int>>& mat2,vector<vector<int>>& result){
@@ -1294,7 +1294,7 @@ int main(){
 
 
     return 0;
-}
+}```
 
 -----------------------------------------Code Summary (Matrix Multiplication):-----------------------
 Multiplies two matrices mat1 and mat2 by checking their compatibility (col1 == row2).
@@ -1315,7 +1315,7 @@ m = columns of mat1 = rows of mat2
 p = columns of mat2
 
 11. MATRIX MULTIPLICATION WITH DIVIDE AND CONQUER
-#include<iostream>
+```#include<iostream>
 #include<vector>
 using namespace std;
 vector<vector<int>> add(vector<vector<int>>mat1,vector<vector<int>>mat2){
@@ -1405,7 +1405,7 @@ int main(){
         vector<vector<int>>result=mul(mat1,mat2);
         print(result,row1,col2);
     return 0;
-}
+}```
 
 --------------------------------------------------------CODE SUMMARY----------------------------------
 The mul() function recursively divides input matrices into 4 submatrices (quadrants) until base case 1x1.
@@ -1421,7 +1421,7 @@ Time complexity  =  O(n3)
 Space complexity =  O(n2+ logn call stack)
 
 12. STRASSEN MULIPLICATION OF MATRIX----------------------------------------------------------------------
-#include<iostream>
+```#include<iostream>
 #include<vector>
 using namespace std;
 vector<vector<int>> add(vector<vector<int>>mat1,vector<vector<int>>mat2){
@@ -1529,7 +1529,7 @@ int main(){
     print(result);
 
     return 0;
-}
+}```
 
 -------------------------------------------------CODE EXPLANATION---------------------------------------------
 You’ve implemented Strassen's Algorithm to multiply two square matrices (whose size is a power of 2).
@@ -1539,7 +1539,7 @@ Time complexity  = O(n^2.81)
 Space complexity = O(n^2)
 
 13. MULTI-STAGE GRAPH -Distance between source and destination-------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include<vector>
 using namespace std;
 const int INF = 1000000; 
@@ -1596,7 +1596,7 @@ int main(){
     }
     MSG(edges,n);
     return 0;
-}
+}```
 
 -----------------------------------------CODE EXPLANATION-------------------------------------------------------
 It calculates the minimum cost path from source (0) to destination (n-1) in a Directed Acyclic Graph (DAG) that's structured as a multistage graph.
@@ -1619,7 +1619,7 @@ Time complexity  = O(n^2)
 Space complexity = O(n^2 +k)
 
 14. STAGES IN MULTI-STAGE GRAPH -------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <algorithm>
 #include<vector>
 using namespace std;
@@ -1677,7 +1677,7 @@ int main(){
     };
     MSG(edges,n);
     return 0;
-}
+}```
 
 --------------------------------------CODE EXPLANATION----------------------------------------------------------
 The code finds the shortest path in a Multi-Stage Graph using Dynamic Programming, starting from the destination node and working backward.
@@ -1691,7 +1691,7 @@ Time complexity  = O(n^2)
 Space complexity = O(n^2 +k)
 
 15. KRUSKAL ALGORITHM--------------------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <queue>
@@ -1782,7 +1782,7 @@ int main(){
         cout<<edge.src<<"--"<<edge.des<<"=="<<edge.wt<<endl;
     }
     return 0;
-    }
+    }```
 
     --------------------------------CODE EXPLANATION--------------------
    This program implements Kruskal’s algorithm to find the Minimum Spanning Tree (MST) of a weighted undirected graph.
@@ -1795,7 +1795,7 @@ Time complexity  = O(E LOG E2)
 Space complexity = O(N^2)
 
 16. STACK SPACE IN QUICK SORT------------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 using namespace std;
 // #include "../headers/array1D.h"
 #include <cstdlib> // For rand()
@@ -1865,7 +1865,7 @@ int main()
     printArray(arr, n);
     cout<<"Max Space used is "<<maxSpace<<endl;
     return 0;
-}
+}```
 
 ---------------------------------------------CODE EXPLANATION------------------------------------------------------
 Generates a random array of n integers between 0 and 99.
@@ -1881,7 +1881,7 @@ Time complexity  = O(n^2)[worst] O(nlogn)[best/Avg.]
 Space complexity = O(n)[worst]   O(log n)[avg.]
 
 17. PRIMS ALGORITHM-----------------------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <vector>
 using namespace std;
 void primMST(vector<vector<int>>& cost, int V) {
@@ -1960,7 +1960,7 @@ int main() {
 
     primMST(cost, V);
     return 0;
-}
+}```
 
 -----------------------------------------------CODE EXPLANATION------------------------------------------------------
 Prim’s MST Using Near[] – How It Works (Simple)
@@ -1980,7 +1980,7 @@ Time Complexity: O(V²)
 Space Complexity: O(V²) for the cost matrix + O(V) for near[] and mstEdges
 
 18.kruskal algorithm-------------------------------------------------------------------
-#include <iostream>
+```#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <queue>
@@ -2125,6 +2125,6 @@ int main() {
     std::vector<int> x(n);
     nQueen(x, 0, n);
     return 0;
-}
+}```
 
 
