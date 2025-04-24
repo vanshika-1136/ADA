@@ -234,7 +234,8 @@ Time Complexity: O(n^2) since each number from 1 to n² is placed once.
 
 Space Complexity: O(n^2)for storing the magic square.```
 
-3.Fractional Knapsack
+
+      break;3.Fractional Knapsack
 
 ```Code – 
 #include <cstdlib>
@@ -255,7 +256,6 @@ int partition(float a[][COL], int l, int h, int mode) {
       i++;
     }
     if (i >= j) {
-      break;
     }
     swap(a[i], a[j]);
   }
@@ -523,149 +523,6 @@ This C++ program simulates processes with random arrival and finish times, compu
 Time Complexity: O(nlogn)
 Space Complexity: O(n*m) 
 
-
-5. FRACTONAL KNAPSACK -------------------------------------------------------------------------
-```
-#include <iostream>
-#include <vector>
-using namespace std;
-void generateArray(double **arr, int n, int m)
-{
-    // srand(time(0));
-    for (int i = 0; i < n; i++)
-    {
-        int wt = rand() % 200 + 20;
-        int profit = rand() % 1000 + 100;
-        arr[i][0] = wt;
-        arr[i][1] = profit;
-        arr[i][2] = (double)arr[i][1]/arr[i][0];
-    }
-}
-void printArray(double **arr, int n, int m) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cout << arr[i][j] << "\t";
-        }
-        cout << endl;
-    }
-}
-int partition(double **arr, int low, int high, int m) {
-    double pivot = arr[high][2];  
-    int i = low - 1;
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j][2]>= pivot) {  
-            i++;
-            
-            for (int p = 0; p < m; p++) {
-                swap(arr[i][p], arr[j][p]);
-            }
-        }
-    }
-
-    for (int p = 0; p < m; p++) {
-        swap(arr[i + 1][p], arr[high][p]);
-        
-    }
-    return i + 1;
-}
-void quickSort(double **arr, int low, int high, int m) {
-    if (low < high) {
-        int p = partition(arr, low, high, m);
-        quickSort(arr, low, p - 1, m);
-        quickSort(arr, p + 1, high, m);
-    }
-}
-vector<double> fractionalKnapsack(double **arr, int n, int capacity) {
-    int weight = 0;
-    double profit = 0;
-    vector<double> List(n, 0);
-    int i = 0;
-    int ratio=arr[i][1]/arr[i][0];
-    // Pick items in full until the knapsack is full
-    while (i < n && weight + arr[i][0] <= capacity) {
-        weight += arr[i][0];
-        profit += arr[i][1];
-        ratio += arr[i][2];
-        List[i] = 1;
-        i++;
-    }
-
-    // If there is remaining capacity, pick the fraction of the next item
-    if (i < n) {
-        int remWt = capacity - weight;
-        double fraction = (double)remWt / arr[i][0];
-        ratio += fraction * arr[i][1];
-        List[i] = fraction;
-    }
-
-    cout << "Total ratio: " <<ratio  << " for " << i << " items." << endl;
-
-    cout << "Total profit: " << profit << " for " << i << " items." << endl;
-    return List;
-}
-void result(double **arr, int n, int capacity) {
-    vector<double> list = fractionalKnapsack(arr, n, capacity);
-    for (int i = 0; i < list.size(); i++) {
-        cout << "Item no. " << i + 1 << "'s fraction: " << list[i] << endl;
-        if (list[i] == 0) {
-            break;
-        }
-    }
-}
-int main() {
-    int n;
-    cout << "Enter number of elements: ";
-    cin >> n;
-
-    int m = 3;  // We have 3 columns (weight, profit)
-    double **arr = new double *[n];
-    for (int i = 0; i < n; i++) {
-        arr[i] = new double[m];  // Create an array of n rows and 3 columns
-    }
-
-    generateArray(arr, n, m);  // Fill the array with random values
-
-    cout << "Sorting by weight in increasing order using QuickSort" << endl;
-    quickSort(arr, 0, n - 1, m);  // Sort based on profit (arr[i][1])
-    
-    cout << "Weight\tProfit\tP/W" << endl;
-    printArray(arr, n, m);
-
-    int capacity = 1000;
-    result(arr, n, capacity);
-
-    
-
-    return 0;
-}
-```
-
---------------------------------Code Explanation:-----------------------------------------
-This program implements the Fractional Knapsack problem using the Greedy Algorithm and QuickSort to maximize profit.
-
-Steps:
-generateArray: Generates random weights (wt) and profits (profit) for n items, then calculates the profit-to-weight ratio (P/W).
-
-quickSort: Sorts items in descending order of P/W using QuickSort.
-
-fractionalKnapsack:
-
-Picks full items until the knapsack reaches its capacity.
-
-If an item doesn't fully fit, it picks a fraction of it.
-
-result: Displays selected items and their fractions.
-
-Time & Space Complexity:
-generateArray: O(n)
-
-quickSort:O(nlogn) (average case), O(n^2)(worst case)
-
-fractionalKnapsack:O(n)
-
-Overall Complexity: O(nlogn) (due to sorting)
-
-Space Complexity:O(n) (for the array and output list)
 
 7. CONVEX HULL-------------------------------------------------------------------------------
 ```
