@@ -59,6 +59,7 @@ Time Complexity: O(logn) due to binary search.
 Space Complexity: O(1) since no extra space is used.
 
 2. PEAK IN 2D-----------------------------------------------------------------
+   
  #include<iostream>
  using namespace std;
  #include <vector>
@@ -76,11 +77,9 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
  vector<int> fPeak(vector<vector<int>> &mat){
     int n=mat.size(); //row
     int m =mat[0].size();
-
     if(m ==0 || n==0){
        return {-1, -1};
     }
-     
      int low=0;
      int high=n-1;
      while(low<=high){
@@ -88,7 +87,6 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
         int rowOfMaxEle =fMax(mat,n ,m ,mid);
         int left =((mid-1)>=0)?mat[rowOfMaxEle][mid-1]:-1;
         int right =((mid+1)>=0)?mat[rowOfMaxEle][mid+1]:-1;
-
         if(mat[rowOfMaxEle][mid-1]<mat[rowOfMaxEle][mid] && mat[rowOfMaxEle][mid+1]< mat[rowOfMaxEle][mid]){
             return {rowOfMaxEle, mid};
         }
@@ -98,9 +96,7 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
         else{
             low =mid+1;
         }
-
-        
-     }
+      }
      return {-1,-1};
  }
  int main(){
@@ -116,7 +112,6 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
     }
     vector<int> peak=fPeak(mat);
     if (peak[0] != -1) {
-        
         cout << "Peak element value: " << mat[peak[0]][peak[1]] << endl;
     } else {
         cout << "No peak element found." << endl;
