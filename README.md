@@ -3,10 +3,12 @@ Analysis and design of algorithms
 
 1. PEAK IN 1D --------------------------------------------------------------------------
    
+ 
+ 
  #include<iostream>
  using namespace std;
  #include <vector>
-int f(vector<int> &arr){
+ int f(vector<int> &arr){
     int n =arr.size();
     if(n==1){
         return 0;
@@ -33,7 +35,7 @@ int f(vector<int> &arr){
         }
         return -1;
     }
-}
+  }
   int main(){
     int n;
     cout<<" enter size of array: "<<n;
@@ -43,7 +45,7 @@ int f(vector<int> &arr){
     cout<<"index of peak: "<< ans<<endl;
     cout<<"element at peak: "<<arr[ans]<<endl;
     return 0;
-  }
+   }
 
 --------------------Code Explanation:-----------------------------------------
 The given C++ program finds the index of a peak element in an array using a modified binary search approach. A peak element is defined as an element that is greater than its neighbors.
@@ -140,17 +142,22 @@ Overall complexity = O(nlogm).
 
 Space Complexity: O(1) (only a few variables are used).
 
-3. MAGIC SQUARE --------------------------------------------------------------------------------
+   
+   3. MAGIC SQUARE --------------------------------------------------------------------------------
+
 #include <iostream>
+
 #include<vector>
+
 using namespace std;
 void generateMagicSquare(int** arr, int n){
     // vector<vector<int>>magicSquare(n,vector<int>(n,0));
     int i=0 ,j=n/2;
     arr[i][j]=1;
-     for(int k=2;k<=n*n;k++){
-     int a = i - 1;
-        int b = j - 1;
+     for(int k=2;k<=n*n;k++)
+     {
+         int a = i - 1;
+         int b = j - 1;
 
         if (a < 0)
         {
