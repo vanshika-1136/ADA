@@ -2,7 +2,8 @@
 Analysis and design of algorithms
 
 1. PEAK IN 1D --------------------------------------------------------------------------
-#include<iostream>
+   
+ #include<iostream>
  using namespace std;
  #include <vector>
 int f(vector<int> &arr){
@@ -59,6 +60,7 @@ Time Complexity: O(logn) due to binary search.
 Space Complexity: O(1) since no extra space is used.
 
 2. PEAK IN 2D-----------------------------------------------------------------
+
    
  #include<iostream>
  using namespace std;
