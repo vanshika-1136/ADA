@@ -122,7 +122,8 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
         cout << "No peak element found." << endl;
     }
     return 0;
- }  ```
+ }
+ ```
 
  ------------------------------Code Explanation:-------------------------------------------------
 This program finds a peak element in a 2D matrix using a binary search on columns approach. A peak element is an element that is greater than its left and right neighbors in the matrix.
@@ -146,7 +147,8 @@ Space Complexity: O(1) (only a few variables are used).
    
    3. MAGIC SQUARE --------------------------------------------------------------------------------
 
-```#include <iostream>
+```
+#include <iostream>
 
 #include<vector>
 
@@ -214,6 +216,7 @@ int main()
     print(arr, n );
     return 0;
 }
+```
 
 -------------------------------Code Explanation:------------------------------------------
 This C++ program generates a Magic Square for an odd-sized matrix using the Siamese method:
@@ -357,6 +360,7 @@ int main() {
        << "\n Total Load: " << curr_load << "\n";
   return 0;
 }
+```
 --------------------------------Code Explanation:-----------------------------------------
 This program implements the Fractional Knapsack problem using the Greedy Algorithm and QuickSort to maximize profit.
 Steps:
@@ -375,7 +379,8 @@ Space Complexity:O(n) (for the array and output list)```
 
 
 4. CPU SCHEDULING----------------------------------------------------------------------------------
-```#include <iostream>
+```
+#include <iostream>
 #include <time.h>
 #include <vector>
 #include <chrono>
@@ -509,7 +514,8 @@ int main()
     printArray(arr, n, m);
     result(arr, n, m);
     return 0;
-}```
+}
+```
 
 ------------------------------------------------------------------CODE EXPLANATION----------------------------------------------------------------------------------------
 This C++ program simulates processes with random arrival and finish times, computes durations, sorts them based on arrival, finish, and duration using QuickSort, and determines how many processes can be executed within a 500-second window.
@@ -519,7 +525,8 @@ Space Complexity: O(n*m)
 
 
 5. FRACTONAL KNAPSACK -------------------------------------------------------------------------
-```#include <iostream>
+```
+#include <iostream>
 #include <vector>
 using namespace std;
 void generateArray(double **arr, int n, int m)
@@ -630,7 +637,8 @@ int main() {
     
 
     return 0;
-}```
+}
+```
 
 --------------------------------Code Explanation:-----------------------------------------
 This program implements the Fractional Knapsack problem using the Greedy Algorithm and QuickSort to maximize profit.
