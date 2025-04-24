@@ -230,6 +230,293 @@ Time Complexity: O(n^2) since each number from 1 to n² is placed once.
 
 Space Complexity: O(n^2)for storing the magic square.
 
+3.Fractional Knapsack
+
+Code – 
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+#define MAX_LOAD 500
+#define COL 4
+
+int partition(float a[][COL], int l, int h, int mode) {
+  int pivot = a[l][mode];
+  int j = h, i = l + 1;
+  while (j >= i) {
+    while (a[j][mode] >= pivot && j > l) {
+      j--;
+    }
+    while (a[i][mode] < pivot && i <= h) {
+      i++;
+    }
+    if (i >= j) {
+      break;
+    }
+    swap(a[i], a[j]);
+  }
+  swap(a[l], a[i - 1]);
+  return i - 1;
+}
+
+void quicksort(float a[][COL], int l, int h, int mode) {
+  if (l < h) {
+    int p = partition(a, l, h, mode);
+    quicksort(a, l, p - 1, mode);
+    quicksort(a, p + 1, h, mode);
+  }
+}
+
+int main() {
+  int profit_max = 1000;
+  int profit_min = 10;
+  int profit_range = profit_max - profit_min + 1;
+  int weight_max = 100;
+  int weigth_min = 10;
+  int weight_range = weight_max - weigth_min + 1;
+  int n;
+  cout << "Enter number of items: ";
+  cin >> n;
+  float items[n][COL];
+  srand(time(NULL));
+  for (int i = 0; i < n; ++i) {
+    items[i][0] = rand() % profit_range + profit_min;
+    items[i][1] = rand() % weight_range + weigth_min;
+    items[i][2] = items[i][0] / items[i][1];
+    items[i][3] = i + 1;
+  }
+
+  // cout << "Catalog\n";
+  // for (int i = 0; i < n; ++i) {
+  //   cout << setw(to_string(n).length()) << fixed << setprecision(0)
+  //        << items[i][3] << ". Profit: " << setw(4) << fixed <<
+  //        setprecision(0)
+  //        << items[i][0] << ", Weight: " << setw(3) << items[i][1]
+  //        << ", Ratio: " << fixed << setprecision(2) << setw(5) <<
+  //        items[i][2]
+  //        << "\n";
+  // }
+
+  // mode = 0 is according to profit
+  quicksort(items, 0, n - 1, 0);
+  int curr_load = 0, curr_profit = 0;
+  float per;
+  for (int i = n - 1; i >= 0; --i) {
+    if (items[i][1] <= MAX_LOAD - curr_load) {
+      curr_load += items[i][1];
+      curr_profit += items[i][0];
+    } else {
+      per = (float)(MAX_LOAD - curr_load) / items[i][1];
+      curr_load += items[i][1] * per;
+      curr_profit += items[i][0] * per;
+    }
+    if (curr_load == MAX_LOAD) {
+      break;
+    }
+  }
+  cout << "\nSort by Profit\n Total Profit: " << curr_profit
+       << "\n Total Load: " << curr_load << "\n";
+
+  // mode = 1 is according to weight
+  quicksort(items, 0, n - 1, 1);
+  curr_load = 0, curr_profit = 0;
+  for (int i = n - 1; i >= 0; --i) {
+    if (items[i][1] <= MAX_LOAD - curr_load) {
+      curr_load += items[i][1];
+      curr_profit += items[i][0];
+    } else {
+      per = (float)(MAX_LOAD - curr_load) / items[i][1];
+      curr_load += items[i][1] * per;
+      curr_profit += items[i][0] * per;
+    }
+    if (curr_load == MAX_LOAD) {
+      break;
+    }
+  }
+  cout << "\nSort by Weight\n Total Profit: " << curr_profit
+       << "\n Total Load: " << curr_load << "\n";
+
+  // mode = 2 is according to profit/weight
+  quicksort(items, 0, n - 1, 2);
+  curr_load = 0, curr_profit = 0;
+  for (int i = n - 1; i >= 0; --i) {
+    if (items[i][1] <= MAX_LOAD - curr_load) {
+      curr_load += items[i][1];
+      curr_profit += items[i][0];
+    } else {
+      per = (float)(MAX_LOAD - curr_load) / items[i][1];
+      curr_load += items[i][1] * per;
+      curr_profit += items[i][0] * per;
+    }
+    if (curr_load == MAX_LOAD) {
+      break;
+    }
+  }
+  cout << "\nSort by Profit/Weight\n Total Profit: " << curr_profit
+       << "\n Total Load: " << curr_load << "\n";
+  return 0;
+}
+--------------------------------Code Explanation:-----------------------------------------
+This program implements the Fractional Knapsack problem using the Greedy Algorithm and QuickSort to maximize profit.
+Steps:
+generateArray: Generates random weights (wt) and profits (profit) for n items, then calculates the profit-to-weight ratio (P/W).
+quickSort: Sorts items in descending order of P/W using QuickSort.
+fractionalKnapsack:
+Picks full items until the knapsack reaches its capacity.
+If an item doesn't fully fit, it picks a fraction of it.
+result: Displays selected items and their fractions.
+---Time & Space Complexity:
+generateArray: O(n)
+quickSort:O(nlogn) (average case), O(n^2)(worst case)
+fractionalKnapsack:O(n)
+Overall Complexity: O(nlogn) (due to sorting)
+Space Complexity:O(n) (for the array and output list)
+
+
+4. CPU SCHEDULING----------------------------------------------------------------------------------
+#include <iostream>
+#include <time.h>
+#include <vector>
+#include <chrono>
+using namespace std;
+using namespace chrono;
+// arr[i][0] = arrrival time, arr[i][1] = finish time, arr[i][3]= duration
+void generateArray(double **arr, int n, int m)
+{
+    srand(time(0));
+    for (int i = 0; i < n; i++)
+    {
+        int arrival = rand() % 200 + 20;
+        int finish = rand() % 200 + 40;
+        while(finish<=arrival){
+            finish = rand() % 200 + 40;
+        }
+        arr[i][0] = arrival;
+        arr[i][1] = finish;
+        arr[i][2] =finish-arrival;
+    }
+}
+int partition(double **arr, int low, int high, int k, int m)
+{
+    double pivot = arr[low][k];
+    int i = low + 1;
+    int j = high;
+    while (i <= j)
+    {
+        while (i <= high && arr[i][k] <= pivot)
+        {
+            i++;
+        };
+        while (j > low && arr[j][k] > pivot)
+        {
+            j--;
+        };
+        if (i < j)
+        {
+            for (int p = 0; p < m; p++)
+            {
+                swap(arr[i][p], arr[j][p]);
+            }
+        }
+    };
+    for (int p = 0; p < m; p++)
+    {
+        swap(arr[low][p], arr[j][p]);
+    }
+    return j;
+}
+void quickSort(double **arr, int low, int high, int k, int m)
+{
+    if (low < high)
+    {
+        int p = partition(arr, low, high, k, m);
+        quickSort(arr, low, p - 1, k, m);
+        quickSort(arr, p + 1, high, k, m);
+    }
+}
+void printArray(double **arr, int n, int m)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << arr[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+vector<double> maxProcesses(double **arr, int n, int m)
+{
+    int totalDuration = 500;//in seconds
+    vector<double> finalList(n, 0);
+    int i = 0;
+    int dur=0;
+    while (dur + arr[i][2] <= totalDuration)
+    {
+            dur+= arr[i][2];
+            finalList[i] = 1;
+            i++;
+    }
+   
+    if (totalDuration - dur > 0)
+    {
+        cout << "More process can be processed for "<<totalDuration-dur<<"seconds\n";
+    }
+
+    cout<<"Total "<<i<<" processes processed in "<<dur<<"seconds."<<endl;
+    return finalList;
+}
+void result(double**arr, int n, int m){
+    auto start = high_resolution_clock::now();
+    vector<double> list = maxProcesses(arr, n, m);
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>(end - start);
+    cout << "The duration is " << duration.count() << " milliseconds" << endl;
+}
+int main()
+{
+    int n;
+    int m=3;
+    cout << "Enter row and columns for matrix:\n";
+    cin >> n ;
+    double **arr = new double *[n];
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = new double[m];
+    }
+    generateArray(arr, n, m);
+
+    cout<<"--------------------------"<<endl;
+    cout<<"Sort Arrival Time"<<endl;
+    quickSort(arr, 0, n - 1, 0, m);
+    cout << "Arrival\tFinish\tDuration" << endl;
+    printArray(arr, n, m);
+    result(arr, n, m);
+    
+    cout<<"--------------------------"<<endl;
+    cout<<"Sort Finish"<<endl;
+    quickSort(arr, 0, n - 1, 1, m);
+    cout << "Arrival\tFinish\tDuration" << endl;
+    printArray(arr, n, m);
+    result(arr, n, m);
+
+    cout<<"--------------------------"<<endl;
+    cout<<"Sort duration"<<endl;
+    quickSort(arr, 0, n - 1, 2, m);
+    cout << "Arrival\tFinish\tDuration" << endl;
+    printArray(arr, n, m);
+    result(arr, n, m);
+    return 0;
+}
+
+------------------------------------------------------------------CODE EXPLANATION----------------------------------------------------------------------------------------
+This C++ program simulates processes with random arrival and finish times, computes durations, sorts them based on arrival, finish, and duration using QuickSort, and determines how many processes can be executed within a 500-second window.
+-------------------------------------------COMPLEXITIES--------------------------------------------------------------
+Time Complexity: O(nlogn)
+Space Complexity: O(n*m) 
+
+
 6. FRACTONAL KNAPSACK -------------------------------------------------------------------------
 #include <iostream>
 #include <vector>
@@ -1692,146 +1979,152 @@ Update near[] for remaining nodes.
 Time Complexity: O(V²)
 Space Complexity: O(V²) for the cost matrix + O(V) for near[] and mstEdges
 
-18. CPU SCHEDULING----------------------------------------------------------------------------------
+18.kruskal algorithm-------------------------------------------------------------------
 #include <iostream>
-#include <time.h>
 #include <vector>
-#include <chrono>
+#include <algorithm>
+#include <queue>
+#include <climits>
 using namespace std;
-using namespace chrono;
-// arr[i][0] = arrrival time, arr[i][1] = finish time, arr[i][3]= duration
-void generateArray(double **arr, int n, int m)
-{
-    srand(time(0));
-    for (int i = 0; i < n; i++)
-    {
-        int arrival = rand() % 200 + 20;
-        int finish = rand() % 200 + 40;
-        while(finish<=arrival){
-            finish = rand() % 200 + 40;
-        }
-        arr[i][0] = arrival;
-        arr[i][1] = finish;
-        arr[i][2] =finish-arrival;
+#define INF INT_MAX
+class Edge{
+    public:
+    int src,des,wt;
+    Edge(int s,int d,int w): src(s),des(d),wt(w){}
+};
+struct compareEdge{
+    bool operator()(const Edge &e1,const Edge &e2){
+    return e1.wt>e2.wt;
+    }
+    
+};
+
+
+class disjointSet{
+    public:
+    vector<int>p;
+    disjointSet(int n){
+    p.resize(n);
+    for(int i=0;i<n;++i){
+        p[i]=-1;
     }
 }
-int partition(double **arr, int low, int high, int k, int m)
-{
-    double pivot = arr[low][k];
-    int i = low + 1;
-    int j = high;
-    while (i <= j)
-    {
-        while (i <= high && arr[i][k] <= pivot)
-        {
-            i++;
-        };
-        while (j > low && arr[j][k] > pivot)
-        {
-            j--;
-        };
-        if (i < j)
-        {
-            for (int p = 0; p < m; p++)
-            {
-                swap(arr[i][p], arr[j][p]);
+int find ( int u){
+    while(p[u]>0){
+    u=p[u];
+    }
+    return u;
+}
+void unionSet(int j,int k){
+  p[j]=k;
+}};
+int kruskal(int e,vector<vector<int>>& cost ,int n, vector<Edge>&t){
+    priority_queue<Edge,vector<Edge>,compareEdge> minHeap;
+
+    for (int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            if (cost[i][j]!=INF){
+                minHeap.push(Edge(i, j, cost[i][j]));
             }
         }
-    };
-    for (int p = 0; p < m; p++)
-    {
-        swap(arr[low][p], arr[j][p]);
     }
-    return j;
-}
-void quickSort(double **arr, int low, int high, int k, int m)
-{
-    if (low < high)
-    {
-        int p = partition(arr, low, high, k, m);
-        quickSort(arr, low, p - 1, k, m);
-        quickSort(arr, p + 1, high, k, m);
-    }
-}
-void printArray(double **arr, int n, int m)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cout << arr[i][j] << "\t";
-        }
-        cout << endl;
-    }
-}
-vector<double> maxProcesses(double **arr, int n, int m)
-{
-    int totalDuration = 500;//in seconds
-    vector<double> finalList(n, 0);
-    int i = 0;
-    int dur=0;
-    while (dur + arr[i][2] <= totalDuration)
-    {
-            dur+= arr[i][2];
-            finalList[i] = 1;
+    disjointSet ds(n);
+    int minCost=0.0;
+    int i=0;
+    while( i<n-1 && !minHeap.empty()){
+        Edge nextEdge =minHeap.top();
+        minHeap.pop();
+        int j=ds.find(nextEdge.src);
+        int k=ds.find(nextEdge.des);
+        if(j!=k){
+            // i=i+1;
+            minCost=minCost+ nextEdge.wt;
+            t.push_back(nextEdge);
+            ds.unionSet(j,k);
             i++;
+        }
     }
-   
-    if (totalDuration - dur > 0)
-    {
-        cout << "More process can be processed for "<<totalDuration-dur<<"seconds\n";
-    }
-
-    cout<<"Total "<<i<<" processes processed in "<<dur<<"seconds."<<endl;
-    return finalList;
+    if(i!=n-1){
+        cout<<"no spanning tree"<<endl;
+        return -1;
+    } else{
+   return minCost; }
 }
-void result(double**arr, int n, int m){
-    auto start = high_resolution_clock::now();
-    vector<double> list = maxProcesses(arr, n, m);
-    auto end = high_resolution_clock::now();
+int main(){
+    int n,e;
+    cout << "Enter number of vertices: ";
+    cin >> n;
 
-    auto duration = duration_cast<milliseconds>(end - start);
-    cout << "The duration is " << duration.count() << " milliseconds" << endl;
-}
-int main()
-{
-    int n;
-    int m=3;
-    cout << "Enter row and columns for matrix:\n";
-    cin >> n ;
-    double **arr = new double *[n];
-    for (int i = 0; i < n; i++)
-    {
-        arr[i] = new double[m];
+    cout << "Enter number of edges: ";
+    cin >> e;
+    vector<vector<int>> cost(n,vector<int>(n,INF));
+    vector<Edge> t;
+    cout << "Enter edges (source destination weight):\n";
+    for(int i=0;i<e;i++){
+        int s,d,w;
+        cin>>s>>d>>w;
+        cost[s][d] = cost[d][s] = w;
+
     }
-    generateArray(arr, n, m);
+     int min = kruskal(e,cost,n,t);
+     cout<<"min cost of mst: "<<min<<endl;
+     cout<<"edges in mst :";
+    for(auto edge:t)
+    {
+        cout<<edge.src<<"--"<<edge.des<<"=="<<edge.wt<<endl;
+    }
+    return 0;
 
-    cout<<"--------------------------"<<endl;
-    cout<<"Sort Arrival Time"<<endl;
-    quickSort(arr, 0, n - 1, 0, m);
-    cout << "Arrival\tFinish\tDuration" << endl;
-    printArray(arr, n, m);
-    result(arr, n, m);
-    
-    cout<<"--------------------------"<<endl;
-    cout<<"Sort Finish"<<endl;
-    quickSort(arr, 0, n - 1, 1, m);
-    cout << "Arrival\tFinish\tDuration" << endl;
-    printArray(arr, n, m);
-    result(arr, n, m);
+}
 
-    cout<<"--------------------------"<<endl;
-    cout<<"Sort duration"<<endl;
-    quickSort(arr, 0, n - 1, 2, m);
-    cout << "Arrival\tFinish\tDuration" << endl;
-    printArray(arr, n, m);
-    result(arr, n, m);
+19. N-Queen---------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+#include <vector>
+
+// bool abs (int a,int b){
+//     if((a+b)==-(a+b))
+// }
+void print(vector<int>x,int n){
+    for(int j=0;j<n;j++){
+        for(int i=0;i<n;i++){
+            if(x[j]==i)
+            cout<<"Q";
+            else{
+                cout<<".";
+            }
+        }
+        cout<<"\n";
+    }
+    cout<<"\n";
+}
+bool place(vector<int>x,int k, int i){
+   for(int j=0;j <k;j++){
+      if(x[j]==i || abs(x[j]-i)==abs(j-k)){
+       return false;
+      }
+   }
+   return true;
+}
+
+void nQueen(vector<int>&x,int k, int n){
+    for(int i=0;i<n;i++){
+       if( place(x,k,i)){
+        x[k]=i;
+        if(k==n-1){
+           print(x,n);
+        }
+        else{
+        nQueen(x,k+1,n);
+        }
+      }
+    }
+}
+int main() {
+    int n = 4;
+    std::vector<int> x(n);
+    nQueen(x, 0, n);
     return 0;
 }
 
-------------------------------------------------------------------CODE EXPLANATION----------------------------------------------------------------------------------------
-This C++ program simulates processes with random arrival and finish times, computes durations, sorts them based on arrival, finish, and duration using QuickSort, and determines how many processes can be executed within a 500-second window.
--------------------------------------------COMPLEXITIES--------------------------------------------------------------
-Time Complexity: O(nlogn)
-Space Complexity: O(n*m) 
 
