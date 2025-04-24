@@ -2,12 +2,11 @@
 Analysis and design of algorithms
 
 1. PEAK IN 1D --------------------------------------------------------------------------
-   
- 
  
  #include<iostream>
  using namespace std;
  #include <vector>
+ 
  int f(vector<int> &arr){
     int n =arr.size();
     if(n==1){
@@ -19,7 +18,6 @@ Analysis and design of algorithms
     if (arr[0]>arr[1]){
         return 0;
     }
-
     int low=1;
     int high =n-2;
     while(low<=high){
@@ -36,6 +34,7 @@ Analysis and design of algorithms
         return -1;
     }
   }
+  
   int main(){
     int n;
     cout<<" enter size of array: "<<n;
