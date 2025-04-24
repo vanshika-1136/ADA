@@ -3,7 +3,7 @@ Analysis and design of algorithms
 
 1. PEAK IN 1D --------------------------------------------------------------------------
  
- #include<iostream>
+``` #include<iostream>
  using namespace std;
  #include <vector>
  
@@ -45,7 +45,7 @@ Analysis and design of algorithms
     cout<<"index of peak: "<< ans<<endl;
     cout<<"element at peak: "<<arr[ans]<<endl;
     return 0;
-   }
+   } ```
 
 --------------------Code Explanation:-----------------------------------------
 The given C++ program finds the index of a peak element in an array using a modified binary search approach. A peak element is defined as an element that is greater than its neighbors.
