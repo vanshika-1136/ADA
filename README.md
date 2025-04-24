@@ -7,7 +7,8 @@ Analysis and design of algorithms
  using namespace std;
  #include <vector>
  
- int f(vector<int> &arr){
+ int f(vector<int> &arr)
+ {
     int n =arr.size();
     if(n==1){
         return 0;
