@@ -679,7 +679,7 @@ int main()
 }
 ```
 
------------------------------------------Code Explanation:----------------------------------
+CODE  EXPLANATION
 This program computes the Convex Hull of a given set of points in 2D space. The convex hull is the smallest polygon that encloses all given points.
 
 Main Components:
@@ -1015,7 +1015,7 @@ int main()
 }
 ```
 
- ---------------------------------------------------Code Summary:------------------------------------------------
+CODE  EXPLANATION
 Defines geometric classes (Point, Line, Triangle) and utility functions to compute orientation, area, and eliminate interior points.
 
 Implements QuickHull algorithm to find the convex hull of a set of 2D points using divide and conquer.
@@ -1024,8 +1024,7 @@ Divides points into regions based on orientation relative to a base line, recurs
 
 Uses determinant for orientation and area calculations and outputs the convex polygon (convex hull) formed.
 
--------------------------------------------------Time and Space Complexities:---------------------------------------
-Overall QuickHull (best/average): O(n log n), worst-case: O(n²) (e.g., all points on hull).
+Time and Space Complexities:-Overall QuickHull (best/average): O(n log n), worst-case: O(n²) (e.g., all points on hull).
 Uses additional O(n) space for storing regions and the polygon.
 
 9. QUICKSORT ITERATIVE----------------------------------------------------------------------------------------------
@@ -1095,7 +1094,7 @@ int main() {
     return 0;
 }
 ```
----------------------------------------code Summary (Iterative QuickSort):-------------------------------
+CODE  EXPLANATION
 Implements QuickSort using an explicit stack instead of recursion (avoiding stack overflow on large inputs).
 
 partition function selects a pivot and rearranges elements around it.
@@ -1104,12 +1103,12 @@ Pushes sub-array indices to stack to mimic recursive calls.
 
 Processes sub-arrays iteratively until the entire array is sorted.
 
--------------------------------------------TIME COMPLEXITY--------------------------------------------------
+TIME COMPLEXITY---
 Operation	     BestCase	AverageCase	Worst Case
 Time Complexity	 O(n log n)	 O(n log n)	    O(n²)(unbalanced pivot)
 Space Complexity O(log n)	 O(log n)	    O(n) (stack in worst case)
 
-10. MATRIX MULTIPLICATION------------------------------------------------------------------------------------
+10. MATRIX MULTIPLICATION-----------------------------------------------------------------------------------
 ```
 #include <iostream>
 #include <vector>
@@ -1169,7 +1168,7 @@ int main(){
 }
 ```
 
------------------------------------------Code Summary (Matrix Multiplication):-----------------------
+CODE  EXPLANATION
 Multiplies two matrices mat1 and mat2 by checking their compatibility (col1 == row2).
 
 Initializes a result matrix of dimensions row1 x col2 with zeros.
@@ -1178,7 +1177,7 @@ Uses 3 nested loops to compute result[i][j] += mat1[i][k] * mat2[k][j].
 
 Prints the result matrix after multiplication.
 
--------------------------------------------Time and Space Complexities:--------------------------------
+Time and Space Complexities:----------------
 Operation	        Complexity
 Time Complexity	    O(n × m × p)
 Space Complexity	O(n × p)
@@ -1282,7 +1281,7 @@ int main(){
 }
 ```
 
---------------------------------------------------------CODE SUMMARY----------------------------------
+CODE  EXPLANATION
 The mul() function recursively divides input matrices into 4 submatrices (quadrants) until base case 1x1.
 
 Each quadrant is multiplied and summed accordingly to form the final result matrix.
@@ -1408,7 +1407,7 @@ int main(){
 }
 ```
 
--------------------------------------------------CODE EXPLANATION---------------------------------------------
+CODE  EXPLANATION
 You’ve implemented Strassen's Algorithm to multiply two square matrices (whose size is a power of 2).
 Strassen reduces multiplication complexity from O(n³) to ≈ O(n².81) by using 7 multiplications instead of 8.
 ------------------------------------------------COMPLEXITIES---------------------------------------------------
@@ -1560,7 +1559,7 @@ int main(){
 }
 ```
 
---------------------------------------CODE EXPLANATION----------------------------------------------------------
+CODE  EXPLANATION
 The code finds the shortest path in a Multi-Stage Graph using Dynamic Programming, starting from the destination node and working backward.
 
 It builds a cost matrix E, tracks the minimum cost to reach the end from each node (fDist), and stores path decisions in d.
@@ -1667,7 +1666,7 @@ int main(){
     }
 ```
 
-    --------------------------------CODE EXPLANATION--------------------
+CODE  EXPLANATION
    This program implements Kruskal’s algorithm to find the Minimum Spanning Tree (MST) of a weighted undirected graph.
 It uses a priority queue (min-heap) to select the smallest edge, and a disjoint-set (union-find) to avoid cycles.
 Edges are added to the MST only if they connect disjoint components.
@@ -1752,7 +1751,7 @@ int main()
 }
 ```
 
----------------------------------------------CODE EXPLANATION------------------------------------------------------
+CODE  EXPLANATION
 Generates a random array of n integers between 0 and 99.
 
 Implements QuickSort using the Lomuto-style partitioning.
@@ -1849,7 +1848,7 @@ int main() {
 }
 ```
 
------------------------------------------------CODE EXPLANATION------------------------------------------------------
+CODE  EXPLANATION
 Prim’s MST Using Near[] – How It Works (Simple)
 Find the cheapest edge in the entire graph → this becomes the starting edge.
 
