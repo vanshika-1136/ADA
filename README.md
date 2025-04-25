@@ -48,7 +48,7 @@ Analysis and design of algorithms
    }
 ```
 
---------------------Code Explanation:-----------------------------------------
+CODE  EXPLANATION
 The given C++ program finds the index of a peak element in an array using a modified binary search approach. A peak element is defined as an element that is greater than its neighbors.
 
 It first checks if the first or last element is a peak.
@@ -125,7 +125,7 @@ int fMax( vector<vector<int>> &mat, int n ,int m ,int col){
  }
  ```
 
- ------------------------------Code Explanation:-------------------------------------------------
+ CODE  EXPLANATION
 This program finds a peak element in a 2D matrix using a binary search on columns approach. A peak element is an element that is greater than its left and right neighbors in the matrix.
 
 The fMax function finds the row index of the maximum element in a given column.
@@ -218,7 +218,7 @@ int main()
 }
 ```
 
--------------------------------Code Explanation:------------------------------------------
+CODE  EXPLANATION
 This C++ program generates a Magic Square for an odd-sized matrix using the Siamese method:
 
 Starts with 1 placed at the middle of the first row.
@@ -361,7 +361,7 @@ int main() {
   return 0;
 }
 ```
---------------------------------Code Explanation:-----------------------------------------
+CODE  EXPLANATION
 This program implements the Fractional Knapsack problem using the Greedy Algorithm and QuickSort to maximize profit.
 Steps:
 generateArray: Generates random weights (wt) and profits (profit) for n items, then calculates the profit-to-weight ratio (P/W).
@@ -517,7 +517,7 @@ int main()
 }
 ```
 
-------------------------------------------------------------------CODE EXPLANATION----------------------------------------------------------------------------------------
+CODE  EXPLANATION
 This C++ program simulates processes with random arrival and finish times, computes durations, sorts them based on arrival, finish, and duration using QuickSort, and determines how many processes can be executed within a 500-second window.
 -------------------------------------------COMPLEXITIES--------------------------------------------------------------
 Time Complexity: O(nlogn)
